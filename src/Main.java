@@ -1,24 +1,20 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.FileWriter;
 
 public class Main {
     public static void main(String[] args) {
-        //Specify the file name
-        String fileName = "Filegoober.txt";
+        FileWriter myFile;
 
-        //Create the file object
-        File myFile = new File(fileName);
-
-        try{
-            //Create a new file on the disk
-            if (myFile.createNewFile()) {
-                System.out.println("File created successfully at " + myFile.getAbsolutePath());
-            } else{
-                System.out.println("File already exists at " + myFile.getAbsolutePath());
+        {
+            try {
+                myFile = new FileWriter("Filegoober.txt");
+                myFile.write("Good Evening!");
+                myFile.append("\nEdmond fr");
+                myFile.close();
+            } catch (IOException e) {
+                System.out.println("An error has occured");
             }
-        } catch (IOException e){
-            System.out.println("An error has occured");
-            e.printStackTrace();
         }
 
     }
